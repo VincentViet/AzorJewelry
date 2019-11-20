@@ -1,0 +1,14 @@
+.ant-card{
+    font-weight: bold;
+    font-size: large;
+}
+
+#addToCart{
+    position: absolute;
+    top: 100px;
+    left: 75px;
+    background-color: #42376A;
+    color: white;
+    height: 50px;
+    border-radius: 10px;
+}

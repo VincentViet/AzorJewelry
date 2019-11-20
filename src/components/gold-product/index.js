@@ -1,0 +1,1 @@
+export { GoldProduct } from './GoldProduct';

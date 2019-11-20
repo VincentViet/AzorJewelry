@@ -1,0 +1,14 @@
+.ant-card{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.ant-card-head{
+    border-left: #42376A solid 5px;
+}
+
+.ant-card-head-title{
+    text-align: left;
+}

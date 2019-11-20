@@ -1,0 +1,41 @@
+.ant-menu-item{
+    margin-left: 40px;
+}
+
+.ant-carousel .slick-slide {
+  /* text-align: center; */
+  height: 500px;
+  /* line-height: 400px; */
+  background: #364d79;
+  overflow: hidden;
+}
+
+.ant-carousel .slick-slide h3 {
+  color: #fff;
+}
+
+.content-img1{
+    position: absolute;
+}
+.content-img1-button{
+    position: relative;
+    top: 300px;
+    left: 150px;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 20px;
+    background-color: #42376A;
+}
+
+.ant-tabs{
+    margin-top: 50px;
+}
+
+/* .ant.tabs.tab{
+    height: 100px;
+} */
+
+.ant-tabs-nav-scroll{
+    text-align: center;
+    font-weight: bold;
+}
