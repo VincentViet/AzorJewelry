@@ -1,13 +1,19 @@
 import React from 'react';
-import
-{
+import {
   BrowserRouter as Router,
   Switch,
-  Route
-} from 'react-router-dom'
+  Route,
+  // Link,
+  Redirect,
+  // useHistory,
+  // useLocation
+} from "react-router-dom";
 
 import store from './store';
-import { Provider } from 'react-redux';
+import {
+  Provider,
+  useSelector,
+} from 'react-redux';
 
 import './App.css';
 
@@ -15,8 +21,21 @@ import
 {
   HomePage,
   EmployeePage,
-  InventoryPage
+  InventoryPage,
+  LoginPage,
+  ManagerPage,
+  RegisterPage,
+  DirectorPage
 } from './pages'
+
+function PrivateRoute({children, ...rest}) {
+  const taiKhoan = useSelector(state => state.login.taiKhoan);
+  return (
+      <Route {...rest}>
+        {taiKhoan ? (children) : (<Redirect to={"/dangnhap"}/>)}
+      </Route>
+  )
+}
 
 function App()
 {
@@ -27,12 +46,31 @@ function App()
           <Route exact path="/">
             <HomePage />
           </Route>
-          <Route path="/employee">
+          <PrivateRoute path="/nhanvien">
             <EmployeePage />
-          </Route>
-          <Route path="/kho">
+          </PrivateRoute>
+          <PrivateRoute path="/kho">
             <InventoryPage />
+          </PrivateRoute>
+          <Route exact path="/dangnhap">
+            {/*<LoginPage type={'0'} />*/}
+            <LoginPage />
           </Route>
+          {/*<Route path={"dangnhap/khachhang"}>*/}
+          {/*  <LoginPage type={'0'} />*/}
+          {/*</Route>*/}
+          {/*<Route path={"dangnhap/nhanvien"}>*/}
+          {/*  <LoginPage type={'1'} />*/}
+          {/*</Route>*/}
+          <Route path="/dangki">
+            <RegisterPage />
+          </Route>
+          <PrivateRoute path="/quanly">
+            <ManagerPage />
+          </PrivateRoute>
+          <PrivateRoute path="/giamdoc">
+            <DirectorPage />
+          </PrivateRoute>
         </Switch>
       </Router>
     </Provider>

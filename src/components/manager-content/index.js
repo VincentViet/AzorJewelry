@@ -1,0 +1,1 @@
+export {ManagerContent} from './ManagerContent'

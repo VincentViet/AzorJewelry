@@ -22,7 +22,7 @@ export function List(props)
             name: 'Vàng 24k',
             provider: 'SPJ'
         }
-    ]
+    ];
 
     const providerData = [
         {
@@ -31,7 +31,7 @@ export function List(props)
             name: 'Vàng 24k',
             address: 'jskfjksjfksj'
         }
-    ]
+    ];
 
     return (
         <Card>
@@ -43,6 +43,11 @@ export function List(props)
                     />
                     <ProductTable dataSource={productData} />
                     <Divider type="horizontal" />
+
+                    <Input
+                        suffix={<Icon type="search" />}
+                        placeholder='Nhập tên hoặc mã nhà cung cấp'
+                    />
                     <ProviderTable dataSource={providerData} />
                 </Col>
                 <Col span={2}>

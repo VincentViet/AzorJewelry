@@ -11,7 +11,7 @@ import { SearchBar } from '../SearchBar'
 import { ClientTable } from '../ClientTable'
 import { TransactionHistory } from '../TransactionHistory'
 
-export function User(props)
+export function Client(props)
 {
     const clientData = [
         {

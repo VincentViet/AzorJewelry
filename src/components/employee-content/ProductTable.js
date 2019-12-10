@@ -42,20 +42,20 @@ export function ProductTable(props)
             dataIndex: "price"
         },
         {
-            title: 'Danh mục',
+            title: 'Loại sản phẩm',
             dataIndex: 'category',
             filters: [
                 {
-                    text: 'Danh mục A',
-                    value: 'Danh mục A'
+                    text: 'Loại A',
+                    value: 'Loại A'
                 },
                 {
-                    text: 'Danh mục B',
-                    value: 'Danh mục B'
+                    text: 'Loại B',
+                    value: 'Loại B'
                 },
                 {
-                    text: 'Danh mục C',
-                    value: 'Danh mục C'
+                    text: 'Loại C',
+                    value: 'Loại C'
                 },
             ],
             filterMultiple: true,

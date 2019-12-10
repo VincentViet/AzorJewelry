@@ -1,19 +1,21 @@
 import React from 'react'
 
 import { Layout } from 'antd'
-import { Header } from '../../components/header'
-import { InventoryContent as Content } from '../../components/inventory-content'
+
+import
+{
+    Header,
+    InventoryContent as Content,
+    Footer
+} from '../../components'
 
 const headerStyles = {
     backgroundColor: '#FFF',
 }
 
 const footerStyles = {
-    backgroundColor: '#AAA',
-    color: 'white',
-    textAlign: 'center',
-    fontStyle: 'bold',
-    fontSize: 50
+    backgroundColor: '#FFF',
+    marginTop: 10
 }
 
 export function InventoryPage(props)
@@ -27,7 +29,7 @@ export function InventoryPage(props)
                 <Content />
             </Layout.Content>
             <Layout.Footer style={footerStyles}>
-                THIS IS FOOTER
+                <Footer />
             </Layout.Footer>
         </Layout>
     )

@@ -20,7 +20,7 @@ export function Service(props)
     const tabsStyle = {
         marginLeft: 10,
         marginRight: 10
-    }
+    };
 
     let data = [
         {
@@ -41,7 +41,7 @@ export function Service(props)
             amount: 1,
             price: 200000
         }
-    ]
+    ];
     
     return (
         <Card>

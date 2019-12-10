@@ -1,19 +1,22 @@
 import React from 'react'
 
 import { Layout } from 'antd'
-import { Header } from '../../components/header'
-import { EmployeeContent as Content } from '../../components/employee-content'
+// import { Header } from '../../components/header'
+// import { EmployeeContent as Content } from '../../components/employee-content'
+
+import
+{
+    Header,
+    EmployeeContent as Content,
+    Footer
+} from '../../components'
 
 const headerStyles = {
     backgroundColor: '#FFF',
 }
 
 const footerStyles = {
-    backgroundColor: '#AAA',
-    color: 'white',
-    textAlign: 'center',
-    fontStyle: 'bold',
-    fontSize: 50
+    backgroundColor: '#FFF',
 }
 
 export function EmployeePage(props) {
@@ -26,7 +29,7 @@ export function EmployeePage(props) {
                 <Content />
             </Layout.Content>
             <Layout.Footer style={footerStyles}>
-                THIS IS FOOTER
+                <Footer />
             </Layout.Footer>
         </Layout>
     )

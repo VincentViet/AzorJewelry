@@ -12,7 +12,7 @@ import
 
 export function ServiceTable(props)
 {
-    const [state, setState] = useState({disable: true})
+    const [state, setState] = useState({disable: true});
     const columns = [
         {
             title: "Tên dịch vụ",
@@ -48,31 +48,31 @@ export function ServiceTable(props)
             dataIndex: "price"
         },
         {
-            title: 'Danh mục',
+            title: 'Loại dịch vụ',
             dataIndex: 'category',
             filters: [
                 {
-                    text: 'Danh mục A',
-                    value: 'Danh mục A'
+                    text: 'Loại A',
+                    value: 'Loại A'
                 },
                 {
-                    text: 'Danh mục B',
-                    value: 'Danh mục B'
+                    text: 'Loại B',
+                    value: 'Loại B'
                 },
                 {
-                    text: 'Danh mục C',
-                    value: 'Danh mục C'
+                    text: 'Loại C',
+                    value: 'Loại C'
                 },
             ],
             filterMultiple: true,
             onFilter: (value, record) => record.category === value
         }
-    ]
+    ];
 
     const rowSelection = {
         onChange: (selectedRowKeys, selectedRows) =>
         {
-            setState({ disable: selectedRows.length === 0 ? true : false })
+            setState({ disable: selectedRows.length === 0 })
         },
         getCheckboxProps: record => ({
             name: record.name,

@@ -1,7 +1,6 @@
 //#region ACTION CREATORS
 export
 {
-    toggleLoginDrawer,
     loggingRequest,
     loggingSuccess,
     loggingFailure

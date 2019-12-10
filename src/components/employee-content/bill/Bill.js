@@ -17,7 +17,7 @@ import './Bill.css'
 const tabsStyle = {
     marginLeft: 10,
     marginRight: 10
-}
+};
 
 export function Bill(props)
 {
@@ -28,23 +28,23 @@ export function Bill(props)
             name: 'Nguyễn Văn A',
             amount: 1,
             price: 200000,
-            category: 'Danh mục A'
+            category: 'Loại A'
         },
         {
             key: '1',
             name: 'Nguyễn Văn B',
             amount: 1,
             price: 200000,
-            category: 'Danh mục B'
+            category: 'Loại B'
         },
         {
             key: '2',
             name: 'Nguyễn Văn C',
             amount: 1,
             price: 200000,
-            category: 'Danh mục C'
+            category: 'Loại C'
         }
-    ]
+    ];
     return (
         <Card>
             <Row>

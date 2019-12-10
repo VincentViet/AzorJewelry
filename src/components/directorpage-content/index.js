@@ -1,0 +1,1 @@
+export { DirectorPageContent } from './DirectorPageContent'

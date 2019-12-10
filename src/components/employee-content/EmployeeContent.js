@@ -4,7 +4,7 @@ import { Tabs } from 'antd'
 import { Tab } from '../tab'
 import { Bill } from './bill'
 import { Service } from './service'
-import { User } from './client'
+import { Client } from './client'
 
 import bill from '../../images/bill.png'
 import service from '../../images/service.png'
@@ -33,7 +33,7 @@ export function EmployeeContent(props) {
             <TabPane tab={
                 <Tab src={user} text="KHÁCH HÀNG" />
             } key="user">
-                <User />
+                <Client />
             </TabPane>
 
             <TabPane tab={
