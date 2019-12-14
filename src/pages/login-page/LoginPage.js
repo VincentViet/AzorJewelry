@@ -35,6 +35,7 @@ export function LoginPage(props)
             case 4:
                 return '/giamdoc';
         }
+        // return '/';
     };
     return (
         taiKhoan ? (<Redirect to={url(taiKhoan.loaitk)}/>) :

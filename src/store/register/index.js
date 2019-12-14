@@ -1,7 +1,6 @@
 //#region ACTION CREATORS
 export
 {
-    toggleRegisterDrawer,
     registerRequest,
     registerSuccess,
     registerFailure

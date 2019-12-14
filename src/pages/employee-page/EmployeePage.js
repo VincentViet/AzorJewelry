@@ -1,8 +1,6 @@
 import React from 'react'
 
 import { Layout } from 'antd'
-// import { Header } from '../../components/header'
-// import { EmployeeContent as Content } from '../../components/employee-content'
 
 import
 {

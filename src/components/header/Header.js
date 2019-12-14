@@ -19,7 +19,7 @@ const { Search } = Input;
 
 export function Header(props)
 {
-    const taiKhoan = useSelector(state => state.taiKhoan);
+    const taiKhoan = useSelector(state => state.login.taiKhoan);
 
     const onLoginBtnClick = () =>
     {
@@ -33,8 +33,10 @@ export function Header(props)
     const menu = (
         <Menu onClick={handleMenuClick}>
             <Menu.Item key="1">
-                <Icon type="user" />
-                1st menu item
+                <a href={'/kho'}>
+                    <Icon type="user" />
+                    Kho
+                </a>
             </Menu.Item>
             <Menu.Item key="2">
                 <Icon type="user" />
@@ -46,6 +48,7 @@ export function Header(props)
             </Menu.Item>
         </Menu>
     );
+
     return (
         <Row>
             <Col span={4}>
@@ -60,13 +63,13 @@ export function Header(props)
                 }
             </Col>
             <Col span={8}>
-                {taiKhoan ?
-                    (<Dropdown
-                        overlay={menu}
-                        icon={<Icon type="user" />}
-                    >
-                        Chào, {taiKhoan.hoten}
-                    </Dropdown>) :
+                {
+                    taiKhoan ?
+                    (<Row type={"flex"} justify={"end"} align={"middle"}>
+                        <Dropdown.Button overlay={menu} icon={<Icon type="user" />}>
+                            Chào, {taiKhoan.hoten}
+                        </Dropdown.Button>
+                    </Row>) :
                     (<Row type="flex" justify="end" align="middle">
                         <Col>
                             <a href='/dangnhap'>
@@ -81,8 +84,8 @@ export function Header(props)
                                 </Button>
                             }
                         </Col>
-                    </Row>
-                )}
+                    </Row>)
+                }
             </Col>
         </Row>
     )

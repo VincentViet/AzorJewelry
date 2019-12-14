@@ -11,13 +11,13 @@ import
     Modal,
     Form,
     Input,
-    Select,
+    // Select,
     Col,
     Upload,
     message
 } from 'antd'
 
-const { Option } = Select;
+// const { Option } = Select;
 
 class ProductInfoForm extends React.Component {
     constructor(props)
@@ -92,14 +92,17 @@ class ProductInfoForm extends React.Component {
                     }
                 </Form.Item>
                 <Form.Item>
-                    <Select
-                        placeholder="Loại"
-                        onChange={this.handleCategoryChange}
-                    >
-                        <Option value={0} >Loại A</Option>
-                        <Option value={1} >Loại B</Option>
-                        <Option value={2} >Loại C</Option>
-                    </Select>
+                    {/*<Select*/}
+                    {/*    placeholder="Loại"*/}
+                    {/*    onChange={this.handleCategoryChange}*/}
+                    {/*>*/}
+                    {/*    <Option value={0} >Loại A</Option>*/}
+                    {/*    <Option value={1} >Loại B</Option>*/}
+                    {/*    <Option value={2} >Loại C</Option>*/}
+                    {/*</Select>*/}
+                    {
+                        getFieldDecorator('loaisp', {})(<Input placeholder="Loại sản phẩm" />)
+                    }
                 </Form.Item>
                 <Row gutter={16}>
                     <Col span={12}>

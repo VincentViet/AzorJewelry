@@ -25,7 +25,7 @@ export const loginReducer = (state = initialState, action) =>
             return {
                 ...state,
                 logging: false,
-                taiKhoan: action.payload.taikhoan,
+                taiKhoan: action.payload,
                 err: null
             };
         

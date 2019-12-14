@@ -7,9 +7,12 @@ import axios from 'axios'
 import { useSelector, useDispatch } from 'react-redux'
 import { loggingRequest, loggingSuccess, loggingFailure } from '../../store/login'
 
+import Cookies from 'js-cookie'
+
 const { Title } = Typography;
 
-const NHAN_VIEN_INFO_URL = 'http://localhost:3000/nhanvien/profile';
+
+const NHAN_VIEN_INFO_URL = 'http://26.154.82.91:3000/nhanvien/profile';
 
 const LF = (props) =>
 {
@@ -39,11 +42,12 @@ const LF = (props) =>
                 })
                     .then(res =>
                     {
+                        // console.log(res.data.taikhoan);
                         if (res.data.valid){
-                            const taiKhoan = res.data.taikhoan;
+                            const taiKhoan = res.data.data;
                             axios.get(`${NHAN_VIEN_INFO_URL}/${taiKhoan.idnv}`)
                                 .then(res=>{
-                                    dispatch(loggingSuccess(res.data))
+                                    dispatch(loggingSuccess(taiKhoan))
                                 }).catch(err => dispatch(loggingFailure(err)))
                         }else
                             dispatch(loggingFailure({message: 'Tên đăng nhập hoặc mật khẩu không đúng ?'}))

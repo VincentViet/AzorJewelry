@@ -13,20 +13,22 @@ export function ProviderTable(props)
 {
     const [state, setState] = useState({
         editable: Map()
-    })
+    });
+
+    console.log(props.dataSource);
     
     const columns = [
         {
             title: "Mã nhà CC",
-            dataIndex: "id",
+            dataIndex: "idnhacc",
         },
         {
             title: "Tên nhà CC",
-            dataIndex: "name",
+            dataIndex: "tennhacc",
         },
         {
             title: "Địa chỉ",
-            dataIndex: "address"
+            dataIndex: "diachinhacc"
         }
         ,
         {
@@ -39,7 +41,7 @@ export function ProviderTable(props)
                         ...state,
                         editable: state.editable.set(index, true)
                     })
-                }
+                };
 
                 const onConfirmClick = () =>
                 {
@@ -47,7 +49,7 @@ export function ProviderTable(props)
                         ...state,
                         editable: state.editable.set(index, false)
                     })
-                }
+                };
 
                 const onCancelClick = () =>
                 {
@@ -55,7 +57,7 @@ export function ProviderTable(props)
                         ...state,
                         editable: state.editable.set(index, false)
                     })
-                }
+                };
 
                 const onCancelButtonClick = () =>
                 {
@@ -63,7 +65,8 @@ export function ProviderTable(props)
                         ...state,
                         editable: state.editable.set(index, false)
                     })
-                }
+                };
+
                 return (
                     <Row type="flex" justify="end">
                         {
