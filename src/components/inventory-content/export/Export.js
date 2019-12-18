@@ -1,7 +1,9 @@
 import React from "react";
 
 import './Export.css'
-import {Card, Col, Divider, Icon, Input, Row} from "antd";
+import {Card, Col, Divider,
+    // Icon, Input,
+    Row} from "antd";
 import {ExportDeliveryInfo} from "../ExportDeliveryInfo";
 import {ImportTable} from "../ImportTable";
 import {ExportInfo} from "../ExportInfo";
@@ -27,10 +29,6 @@ export function Export(props) {
             <Row>
                 <Col span={14}>
                     <Row>
-                        <Input
-                            suffix={<Icon type="search" />}
-                            placeholder='Nhập tên hoặc mã sản phẩm'
-                        />
                         <ImportTable dataSource={data} />
                     </Row>
                     <Row>

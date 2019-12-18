@@ -3,29 +3,22 @@ import React from 'react'
 import { Row, Typography, Input, Button, Icon, Form, Checkbox } from 'antd';
 import logo from '../../images/j-logo.png'
 
-import axios from 'axios'
 import { useSelector, useDispatch } from 'react-redux'
-import { loggingRequest, loggingSuccess, loggingFailure } from '../../store/login'
-
-import Cookies from 'js-cookie'
+import {
+    employeeLoggingRequest,
+    employeeLoggingSuccess,
+    employeeLoggingFailure
+} from '../../store/login'
 
 const { Title } = Typography;
-
-
-const NHAN_VIEN_INFO_URL = 'http://26.154.82.91:3000/nhanvien/profile';
 
 const LF = (props) =>
 {
     const { getFieldDecorator } = props.form;
 
-    const loading = useSelector(state => state.login.logging);
+    const loading = useSelector(state => state.login.loading);
     const err = useSelector(state => state.login.err);
     const dispatch = useDispatch();
-
-    // const logging = (username, pass, remember) =>
-    // {
-    //
-    // };
 
     const onLogin = (e) =>
     {
@@ -34,24 +27,16 @@ const LF = (props) =>
         {
             if (!err)
             {
-                // console.log('Received values of form: ', values);
-                dispatch(loggingRequest());
-                axios.post(props.url, {
-                    tendangnhap: values.username,
-                    matkhau: values.password
-                })
-                    .then(res =>
+                dispatch(employeeLoggingRequest(
+                    null,
                     {
-                        // console.log(res.data.taikhoan);
-                        if (res.data.valid){
-                            const taiKhoan = res.data.data;
-                            axios.get(`${NHAN_VIEN_INFO_URL}/${taiKhoan.idnv}`)
-                                .then(res=>{
-                                    dispatch(loggingSuccess(taiKhoan))
-                                }).catch(err => dispatch(loggingFailure(err)))
-                        }else
-                            dispatch(loggingFailure({message: 'Tên đăng nhập hoặc mật khẩu không đúng ?'}))
-                    }).catch(err => dispatch(loggingFailure(err)))
+                        tendangnhap: values.username,
+                        matkhau: values.password,
+                        nhomatkhau: values.remember
+                    },
+                    (account) => dispatch(employeeLoggingSuccess(account)),
+                    (err) => dispatch(employeeLoggingFailure(err))
+                ))
             }
         });
     };
@@ -143,4 +128,5 @@ const LF = (props) =>
     )
 };
 
-export const LoginForm = Form.create({name: 'loginForm'})(LF);
+// export const LoginForm = Form.create({name: 'loginForm'})(LF);
+export const LoginForm = Form.create({})(LF);

@@ -19,35 +19,87 @@ const { Search } = Input;
 
 export function Header(props)
 {
-    const taiKhoan = useSelector(state => state.login.taiKhoan);
+    const account = useSelector(state => state.login.account);
 
-    const onLoginBtnClick = () =>
-    {
-
+    const getMenu = (tk) =>{
+        switch (tk) {
+            case 1:
+                return (
+                    <Menu
+                    >
+                        <Menu.Item key="profile">
+                            <a href={'/kho'}>
+                                <Icon type="user" />
+                                &nbsp; Thông tin tài khoản
+                            </a>
+                        </Menu.Item>
+                        <Menu.Item key="logout">
+                            <a href={'/dangxuat'}>
+                                <Icon type="logout" />
+                                &nbsp; Đăng xuất
+                            </a>
+                        </Menu.Item>
+                    </Menu>
+                );
+            case 2:
+                return (
+                    <Menu
+                    >
+                        <Menu.Item key="profile">
+                            <a href={'/kho'}>
+                                <Icon type="user" />
+                                &nbsp; Thông tin tài khoản
+                            </a>
+                        </Menu.Item>
+                        <Menu.Item key="logout">
+                            <a href={'/dangxuat'}>
+                                <Icon type="logout" />
+                                &nbsp; Đăng xuất
+                            </a>
+                        </Menu.Item>
+                    </Menu>
+                );
+            case 3:
+            return (
+                <Menu
+                >
+                    <Menu.Item key="profile">
+                        <a href={'/kho'}>
+                            <Icon type="user" />
+                            &nbsp; Thông tin tài khoản
+                        </a>
+                    </Menu.Item>
+                    <Menu.Item key="logout">
+                        <a href={'/dangxuat'}>
+                            <Icon type="logout" />
+                            &nbsp; Đăng xuất
+                        </a>
+                    </Menu.Item>
+                </Menu>
+            );
+            case 4:
+                return (
+                    <Menu
+                    >
+                        <Menu.Item key="profile">
+                            <a href={'/kho'}>
+                                <Icon type="user" />
+                                &nbsp; Thông tin tài khoản
+                            </a>
+                        </Menu.Item>
+                        <Menu.Item key="logout">
+                            <a href={'/dangxuat'}>
+                                <Icon type="logout" />
+                                &nbsp; Đăng xuất
+                            </a>
+                        </Menu.Item>
+                    </Menu>
+                );
+            default:
+                return (<></>);
+        }
     };
-
-    const handleMenuClick = (e) =>{
-
-    };
-
-    const menu = (
-        <Menu onClick={handleMenuClick}>
-            <Menu.Item key="1">
-                <a href={'/kho'}>
-                    <Icon type="user" />
-                    Kho
-                </a>
-            </Menu.Item>
-            <Menu.Item key="2">
-                <Icon type="user" />
-                2nd menu item
-            </Menu.Item>
-            <Menu.Item key="3">
-                <Icon type="user" />
-                3rd item
-            </Menu.Item>
-        </Menu>
-    );
+    const menu = account ? getMenu(account.taikhoan.loaitk) : null;
 
     return (
         <Row>
@@ -64,16 +116,16 @@ export function Header(props)
             </Col>
             <Col span={8}>
                 {
-                    taiKhoan ?
+                    account ?
                     (<Row type={"flex"} justify={"end"} align={"middle"}>
                         <Dropdown.Button overlay={menu} icon={<Icon type="user" />}>
-                            Chào, {taiKhoan.hoten}
+                            Chào, {account.taikhoan.hoten}
                         </Dropdown.Button>
                     </Row>) :
                     (<Row type="flex" justify="end" align="middle">
                         <Col>
                             <a href='/dangnhap'>
-                                <Button type="primary" size='large' onClick={onLoginBtnClick}>Đăng nhập</Button>
+                                <Button type="primary" size='large'>Đăng nhập</Button>
                             </a>
                         </Col>
                         <Col>

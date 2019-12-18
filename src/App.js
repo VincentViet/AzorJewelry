@@ -1,19 +1,29 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  // Link,
   Redirect,
-  // useHistory,
-  // useLocation
 } from "react-router-dom";
+
+import {
+  employeeAutoLoginRequest,
+  employeeLoggingFailure,
+  employeeLoggingSuccess,
+  logout
+} from './store/login'
 
 import store from './store';
 import {
   Provider,
   useSelector,
+  useDispatch
 } from 'react-redux';
+
+import {
+    Result,
+    Button
+} from "antd";
 
 import './App.css';
 
@@ -29,11 +39,50 @@ import
 } from './pages'
 
 function PrivateRoute({children, ...rest}) {
-  const taiKhoan = useSelector(state => state.login.taiKhoan);
+  const dispatch = useDispatch();
+  const account = useSelector(state => state.login.account);
+
+  useEffect(() => {
+    dispatch(employeeAutoLoginRequest(
+        null,
+        (account)=> dispatch(employeeLoggingSuccess(account)),
+        (err) => dispatch(employeeLoggingFailure(err))
+    ))
+  }, [dispatch]);
+
   return (
       <Route {...rest}>
-        {taiKhoan ? (children) : (<Redirect to={"/dangnhap"}/>)}
+        {account ? (children) : (<Redirect to={"/dangnhap"}/>)}
       </Route>
+  )
+}
+
+function Logout(props) {
+
+  const dispatch = useDispatch();
+  const account = localStorage.getItem('azor.jewelry.token');
+  useEffect(()=> {
+    dispatch(logout());
+  }, [dispatch]);
+
+  return(
+      account ?
+          (<Redirect to={'/dangnhap'} />) :
+          (<Redirect to={'/404'}/>)
+  )
+}
+
+function NotFoundPage(props){
+  return(
+      <Result
+          status="404"
+          title="404"
+          subTitle="Sorry, the page you visited does not exist."
+          extra={<Button type="primary">
+            <a href={'/'}>
+              Back Home
+            </a></Button>}
+      />
   )
 }
 
@@ -53,17 +102,16 @@ function App()
             <InventoryPage />
           </PrivateRoute>
           <Route exact path="/dangnhap">
-            {/*<LoginPage type={'0'} />*/}
             <LoginPage />
           </Route>
-          {/*<Route path={"dangnhap/khachhang"}>*/}
-          {/*  <LoginPage type={'0'} />*/}
-          {/*</Route>*/}
-          {/*<Route path={"dangnhap/nhanvien"}>*/}
-          {/*  <LoginPage type={'1'} />*/}
-          {/*</Route>*/}
+          <Route exact path={"/dangxuat"}>
+            <Logout/>
+          </Route>
           <Route path="/dangki">
             <RegisterPage />
+          </Route>
+          <Route path={'/404'}>
+            <NotFoundPage/>
           </Route>
           <PrivateRoute path="/quanly">
             <ManagerPage />

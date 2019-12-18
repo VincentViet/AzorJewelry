@@ -10,8 +10,8 @@ import
 } from 'antd'
 import { LoginForm } from './LoginForm';
 
-const CLIENT_LOGGING_URL = 'http://26.154.82.91:3000/login/khachhang';
-const EMPLOYEE_LOGGING_URL = 'http://26.154.82.91:3000/login/nhanvien';
+const CLIENT_LOGGING_URL = 'http://localhost:3000/login/khachhang';
+const EMPLOYEE_LOGGING_URL = 'http://localhost:3000/login/nhanvien';
 
 export function LoginPageContent(props) {
     // console.log(props.type);

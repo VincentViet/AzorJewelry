@@ -1,11 +1,12 @@
 import React from "react";
 
-import './Import.css'
-import {Card, Col, Divider, Icon, Input, Row} from "antd";
+import {Card, Col, Divider, Row} from "antd";
 import {ImportDeliveryInfo} from "../ImportDeliveryInfo";
 import {ImportTable} from "../ImportTable";
 import {PaymentInfo} from "../PaymentInfo";
 import {ProviderInfo} from "../ProviderInfo";
+
+import './Import.css'
 
 export function Import(props) {
 
@@ -26,17 +27,9 @@ export function Import(props) {
         <Card>
             <Row>
                 <Col span={14}>
-                    <Row>
-                        <Input
-                            suffix={<Icon type="search" />}
-                            placeholder='Nhập tên hoặc mã sản phẩm'
-                        />
-                        <ImportTable dataSource={data} />
-                    </Row>
-                    <Row>
-                        <Divider type="horizontal" />
-                    </Row>
-                    <Row><ImportDeliveryInfo /></Row>
+                    <ImportTable dataSource={data} />
+                    <Divider type="horizontal" />
+                    <ImportDeliveryInfo />
                 </Col>
                 <Col span={2}>
                     <Divider

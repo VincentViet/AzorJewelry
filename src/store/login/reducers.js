@@ -1,42 +1,44 @@
 import
 {
-    LOGGING_REQUEST,
-    LOGGING_SUCCESS,
-    LOGGING_FAILURE
+    ActionType
 } from './actions'
 
 const initialState = {
     visible: false,
-    logging: false,
-    taiKhoan: null,
+    loading: false,
+    account: null,
     err: null
 };
 
 export const loginReducer = (state = initialState, action) =>
 {
     switch (action.type) {
-        case LOGGING_REQUEST:
+        case ActionType.EMPLOYEE_LOGGING_REQUEST:
             return {
                 ...state,
-                logging: true
+                loading: true
             };
         
-        case LOGGING_SUCCESS:
+        case ActionType.EMPLOYEE_LOGGING_SUCCESS:
             return {
                 ...state,
-                logging: false,
-                taiKhoan: action.payload,
+                loading: false,
+                account: action.payload,
                 err: null
             };
         
-        case LOGGING_FAILURE:
+        case ActionType.EMPLOYEE_LOGGING_FAILURE:
             return {
                 ...state,
-                logging: false,
-                taiKhoan: null,
+                loading: false,
+                account: null,
                 err: action.payload
             };
-            
+        case ActionType.LOGOUT:
+            return {
+                ...state,
+                account: null
+            };
         default: return state;
     }
 };

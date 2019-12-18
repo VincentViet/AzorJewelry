@@ -1,9 +1,12 @@
 //#region ACTION CREATORS
 export
 {
-    loggingRequest,
-    loggingSuccess,
-    loggingFailure
+    employeeLoggingFailure,
+    employeeLoggingRequest,
+    employeeLoggingSuccess,
+
+    employeeAutoLoginRequest,
+    logout
 } from './actions'
 //#endregion
 

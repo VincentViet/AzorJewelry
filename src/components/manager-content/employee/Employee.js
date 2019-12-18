@@ -1,9 +1,10 @@
 import React from "react";
 
 import './Employee.css'
-import {Card, Col, Divider, Icon, Input, Row} from "antd";
+import {Card, Col, Divider, Row} from "antd";
 import {EmployeeTable} from "../EmployeeTable";
-import {TransactionHistory} from '../TransactionHistory'
+import {EmployeeInfo} from "../EmployeeInfo";
+// import {TransactionHistory} from '../TransactionHistory'
 
 export function Employee(props) {
     const employeeData = [
@@ -13,26 +14,22 @@ export function Employee(props) {
             name: 'Vàng 24k'
         }
     ];
-    const historyData = [
-        {
-            key: 0,
-            id: 'SS001',
-            price: '1.000.000 VNĐ',
-            date: '20h35 10/10/2019'
-        }
-    ];
+    // const historyData = [
+    //     {
+    //         key: 0,
+    //         id: 'SS001',
+    //         price: '1.000.000 VNĐ',
+    //         date: '20h35 10/10/2019'
+    //     }
+    // ];
 
     return (
         <Card>
             <Row>
-                <Col span={14}>
-                    <Input
-                        suffix={<Icon type="search" />}
-                        placeholder='Nhập tên hoặc mã sản phẩm'
-                    />
+                <Col span={8}>
                     <EmployeeTable dataSource={employeeData} />
-                    <Divider type="horizontal" />
-                    <TransactionHistory dataSource={historyData} />
+                    {/*<Divider type="horizontal" />*/}
+                    {/*<TransactionHistory dataSource={historyData} />*/}
                 </Col>
                 <Col span={2}>
                     <Divider
@@ -42,8 +39,8 @@ export function Employee(props) {
                         }}
                         type="vertial" />
                 </Col>
-                <Col span={8}>
-                    <h1>Employee Info</h1>
+                <Col span={14}>
+                    <EmployeeInfo/>
                 </Col>
             </Row>
         </Card>

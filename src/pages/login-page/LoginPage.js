@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 
 import { Layout } from 'antd'
 import
@@ -8,8 +8,13 @@ import
     Footer
 } from '../../components'
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
+import {
+    employeeAutoLoginRequest,
+    employeeLoggingSuccess,
+    employeeLoggingFailure
+} from "../../store/login";
 
 const headerStyles = {
     backgroundColor: '#FFF',
@@ -22,9 +27,10 @@ const footerStyles = {
 
 export function LoginPage(props)
 {
-    const taiKhoan = useSelector(state => state.login.taiKhoan);
+    const dispatch = useDispatch();
+    const account = useSelector(state => state.login.account);
+    // const account = localStorage.getItem('employeeAccount');
     const url = (loaiTK) =>{
-        // eslint-disable-next-line default-case
         switch (loaiTK) {
             case 1:
                 return '/nhanvien';
@@ -34,11 +40,23 @@ export function LoginPage(props)
                 return '/kho';
             case 4:
                 return '/giamdoc';
+            default:
+                return '/';
         }
-        // return '/';
     };
+
+    useEffect(() => {
+        dispatch(employeeAutoLoginRequest(
+            null,
+            (account)=> dispatch(employeeLoggingSuccess(account)),
+            (err) => dispatch(employeeLoggingFailure(err))
+        ))
+    }, [dispatch]);
+
+    // console.log(account);
+
     return (
-        taiKhoan ? (<Redirect to={url(taiKhoan.loaitk)}/>) :
+        account ? (<Redirect to={url(account.taikhoan.loaitk)}/>) :
             (<Layout>
                 <Layout.Header style={headerStyles}>
                     {/*<Header />*/}

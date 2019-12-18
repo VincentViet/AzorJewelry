@@ -1,4 +1,4 @@
-import React, {isValidElement, useState} from 'react'
+import React, {useState} from 'react'
 
 import {
     Select,
@@ -15,7 +15,7 @@ import logo from '../../images/j-logo.png'
 
 import axios from 'axios'
 import { useSelector, useDispatch } from 'react-redux'
-import { loggingRequest, loggingSuccess, loggingFailure } from '../../store/login'
+import { employeeLoggingRequest, employeeLoggingSuccess, employeeLoggingFailure } from '../../store/login'
 
 const { Title } = Typography;
 
@@ -31,17 +31,17 @@ const LF = (props) =>
     const dispath = useDispatch();
     const logging = (username, pass) =>
     {
-        dispath(loggingRequest());
+        dispath(employeeLoggingRequest());
         axios.post(props.url, {
             username: username,
             password: pass
         })
             .then(res =>
             {
-                dispath(loggingSuccess(res))
+                dispath(employeeLoggingSuccess(res))
             }).catch(err =>
             {
-                dispath(loggingFailure(err))
+                dispath(employeeLoggingFailure(err))
         })
     };
     const onLogin = (e) =>
@@ -84,7 +84,6 @@ const LF = (props) =>
     const handleConfirmBlur = e => {
         const {value} = e.target;
         setState({confirmDirty: state.confirmDirty || !!value});
-        // console.log(state.confirmDirty || !!value);
     };
 
     return (
@@ -207,7 +206,7 @@ const LF = (props) =>
                     help={err ? err.message : ''} />
             </Form>
         </div>
-    )
+    );
 };
 
 export const RegisterForm = Form.create({name: 'registerForm'})(LF);

@@ -20,7 +20,7 @@ export function WareHouse(props)
             amount: 105,
             days: 34,
         }
-    ]
+    ];
     const warningData = [
         {
             key: '0',

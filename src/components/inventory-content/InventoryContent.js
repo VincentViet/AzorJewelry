@@ -2,7 +2,7 @@ import React from 'react'
 import { Tabs } from 'antd'
 
 import { Tab } from '../tab'
-import { List } from './list'
+import {List} from './list'
 import {Import} from "./import";
 import {Export} from './export'
 import {WareHouse} from "./warehouse";
